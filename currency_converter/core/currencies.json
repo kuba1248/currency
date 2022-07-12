@@ -1,0 +1,10 @@
+[
+    {"cc":"USD","symbol":"$","name":"Доллар"},
+    {"cc":"KGS","symbol":"\u0441\u043e\u043c","name":"Сом"},
+    {"cc":"RUB","symbol":"\u20bd","name":"Рубль"},
+    {"cc":"EUR","symbol":"\u20ac","name":"Евро"},
+    {"cc":"KZT","symbol":"T","name":"Тенге"},
+    {"cc":"CNY","symbol":"\u00a5","name":"Юань"},
+    {"cc":"UZS","symbol":"UZS","name":"Сум"},
+    {"cc":"TRY","symbol":"TRY","name":"Лира"}
+]

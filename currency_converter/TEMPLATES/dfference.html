@@ -1,0 +1,119 @@
+{% load static %}
+<html>
+   <head>
+      <title>Разница</title>
+      <style>
+         *, *:before, *:after {
+         box-sizing: border-box;
+         }
+         html, body {
+         width: 100%;
+         height: 100%;
+         margin: 0;
+         padding: 0;
+         }
+         body {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font: normal 10px 'Open Sans', sans-serif;
+         margin: 0;
+         -webkit-font-smoothing: antialiased;
+         color: #4c4c4c;
+         background: #0fd8c4;
+         }
+         .clear {
+         clear: both;
+         }
+         h1 {
+         text-align: center;
+         font-size: 22px;
+         color: white;
+         }
+         .select-wrapper {
+         position: relative;
+         width: 350px;
+         }
+         .select-wrapper::after {
+         color: black;
+         content: '▾';
+         margin-right: 10px;
+         pointer-events: none;
+         position: absolute;
+         right: 10px;
+         top: 7px;
+         font-size: 20px;
+         }
+         .select {
+         -moz-appearance: none;
+         -webkit-appearance: none;
+         background: white;
+         border: none;
+         border-radius: 0;
+         cursor: pointer;
+         padding: 12px;
+         width: 100%;
+         font-size: 18px;
+         }
+         .select:focus {
+         color: black;
+         }
+         .select::-ms-expand {
+         display: none;
+         }
+         input{ width: 100%; height: 50px;}
+         h2 {color: #fff; text-align: center; font-size: 35px;}
+      </style>
+   </head>
+   <body>
+      <div class="container">
+     <p style="text-align:center;">
+    <img src="{% static 'core/mig.png' %}" alt="My image"> <br>
+    </p>
+         <h1>Посчитать разницу:</h1>
+         <form method="post" action="{% url 'dfference' %}">
+         {% csrf_token %}
+              <h3>Сумма:</h3>
+         <!-- Amount input -->
+		 <div class="select-text">
+            <input  name="amount" type="text">
+         </div>
+         <br>
+             <h3>Валюта:</h3>
+		 <div class="select-wrapper">
+			<!-- From options -->
+            <select name="currency_from" class="select">
+               {% for c in currency_data2 %}
+               <option value="{{c.cc}}">{{c.name}}</option>
+               {% endfor %}
+            </select>
+         </div>
+         <br>
+              <h3>Период:</h3>
+         <div class="select-wrapper">
+			<!-- To options -->
+            <select name="currency_to" class="select">
+               {% for c in currency_data2 %}
+               <option value="{{c.cc}}">{{c.name}}</option>
+               {% endfor %}
+            </select>
+         </div>
+         <br>
+         <div class="select-submit">
+            <input type="submit" value="Посчитать">
+         </div>
+         <!-- Converter result -->
+             <h2>Разница:</h2>
+         <h2>{{ currency_to }}: {{ result }}$   +{{ ex_target }}% </h2>
+
+         <p style="text-align:center;">
+                 <a href=".."> <button type="button" class="btn btn-success"> Конвертировать валюту </button> </a>
+         </p>
+
+      </div>
+
+   </body>
+
+
+
+</html>
